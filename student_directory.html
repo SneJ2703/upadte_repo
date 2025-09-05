@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alumni Directory</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="common.css">
+    </head>
+<body>
+<!-- Top Header -->
+    <div class="top-header">
+        <div class="logo-section">
+            <div class="logo">
+                <div class="logo-icon">AU</div>
+                <span class="logo-text">Alumni Connect</span>
+            </div>
+        </div>
+        
+        <div class="header-right">
+            <div class="search-bar">
+                <input type="text" class="search-input" placeholder="Search alumni, events...">
+                <i class="fas fa-search search-icon"></i>
+            </div>
+            <button class="notification-icon">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">1</span>
+            </button>
+            <div class="user-info">
+                <div class="user-avatar">👤</div>
+                <span class="user-name">Student-1</span>
+                <button class="logout-btn" onclick="handleLogout()" style="margin-left: 1rem; padding: 0.5rem 1rem; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; transition: background-color 0.3s; font-weight: 500;" aria-label="Logout from dashboard">
+                    <i class="fas fa-sign-out-alt" aria-hidden="true"></i> Logout
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="container">
+    <nav class="sidebar">
+        <a href="student_dashboard.html" class="nav-item">
+            <i class="fas fa-th-large"></i>
+            Dashboard
+        </a>
+        <a href="student_directory.html" class="nav-item active">
+            <i class="fas fa-users"></i>
+            Alumni Directory
+        </a>
+        <a href="student_events.html" class="nav-item">
+            <i class="fas fa-calendar-alt"></i>
+            Events
+        </a>
+        <a href="students_forums.html" class="nav-item">
+            <i class="fas fa-comments"></i>
+            Forums
+        </a>
+        <a href="students_mentor.html" class="nav-item">
+            <i class="fas fa-user-graduate"></i>
+            Mentorship
+        </a>
+        <a href="students_career.html" class="nav-item">
+            <i class="fas fa-briefcase"></i>
+            Career Center
+        </a>
+        <a href="students_profile.html" class="nav-item active">
+                    <i class="fas fa-user-cog"></i>
+                    Profile Settings
+                </a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="welcome-section">
+            <h1 class="welcome-title">Alumni Directory</h1>
+            <p class="welcome-subtitle">Connect with alumni from your university</p>
+        </div>
+        <!-- Content Grid -->
+        <div class="content-grid">
+            <!-- Left Section with Alumni List -->
+            <div class="content-section">
+                <!-- Filters -->
+                <div class="filters">
+                    <input type="text" id="searchName" placeholder="Search by name...">
+                    <select id="filterYear">
+                        <option value="">Graduation Year</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                        <option value="2017">2017</option>
+                        <option value="2016">2016</option>
+                        <option value="2015">2015</option>
+                    </select>
+                    <input type="text" id="filterCompany" placeholder="Filter by company...">
+                    <input type="text" id="filterSkills" placeholder="Filter by skills...">
+                    <input type="text" id="filterLocation" placeholder="Filter by location...">
+                    <button onclick="applyFilters()">Apply Filters</button>
+                </div>
+        <script src="common.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script>
+        // Ensure logout function is available
+        function handleLogout() {
+            if (window.loginManager && typeof window.loginManager.logout === 'function') {
+                window.loginManager.logout();
+            } else {
+                // Fallback: clear session and redirect manually
+                localStorage.removeItem('userSession');
+                window.location.href = '../index.html';
+            }
+        }
+
+        // Add hover and focus effects for logout button
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.querySelector('.logout-btn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('mouseenter', function() {
+                    this.style.backgroundColor = '#dc2626';
+                });
+                logoutBtn.addEventListener('mouseleave', function() {
+                    this.style.backgroundColor = '#ef4444';
+                });
+                logoutBtn.addEventListener('focus', function() {
+                    this.style.outline = '2px solid #007AFF';
+                    this.style.outlineOffset = '2px';
+                });
+                logoutBtn.addEventListener('blur', function() {
+                    this.style.outline = 'none';
+                });
+            }
+        });
+    </script>
+    </main>
+    </body>
+</html>
